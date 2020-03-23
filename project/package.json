@@ -5,7 +5,7 @@
   "author": "Kevin Brown (based on another example project by Martin Adamek)",
   "license": "MIT",
   "scripts": {
-    "start": "webpack && node ../output/server"
+    "start": "webpack && cd ../output && node server",
   },
   "dependencies": {
     "express": "^4.17.1",
