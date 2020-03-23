@@ -8,8 +8,7 @@ import {
 } from "mikro-orm";
 
 import { AuthorController, BookController } from "./controllers";
-import { Author, Book, BookTag, Publisher } from "./entities";
-import { BaseEntity } from "./entities/BaseEntity";
+import { Entities, Author, Book } from "./entities";
 
 export const DI = {} as {
   orm: MikroORM;
@@ -24,7 +23,7 @@ const port = process.env.PORT || 3000;
 (async () => {
   DI.orm = await MikroORM.init({
     type: "postgresql",
-    entities: [Author, Book, BookTag, Publisher, BaseEntity],
+    entities: Object.values(Entities),
     dbName: "mikro-orm-webpack-express-ts",
     logger: console.log.bind(console),
     debug: true,
