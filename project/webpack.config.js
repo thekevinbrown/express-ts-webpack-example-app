@@ -44,8 +44,9 @@ module.exports = {
     rules: [
       // We do not want ts-morph bundled up in the application, as it drags in typescript,
       // which is huge. We are not using either of these at runtime, but they can't be
-      // ignored because Mikro still requires them. This allows them to be required but
-      // simply be swapped with null at runtime.
+      // ignored using IgnorePlugin because Mikro still requires them, and this causes an error
+      // at runtime. Packaging them with the null-loader allows them to be required without erroring
+      // then simply be swapped with null at runtime.
       {
         test: /(TsMorphMetadataProvider|ts-morph)/,
         loader: "null-loader"
